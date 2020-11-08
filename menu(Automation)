@@ -1,9 +1,9 @@
-import OS
+import os
 os.system("tput setaf 3")
 print("\t\t\t WELCOME TO MY MENU!!")
 os.system("tput setaf 7")
 print("\t\t\t_ _ _ _ _ _ _ _ _ _ _ _ _")
-r=input(print("Where do you want to run this program?(remote/local):\t)
+r=input("Where do you want to run this program?(remote/local):\t")
 print("""
 \n
 press 1: launch an instance in AWS
@@ -11,4 +11,49 @@ press 2: Create and launch Namenode
 press 3: Create and launch Datanode
 press 4: launch a new OS through Docker
 press 5: launch apache webserver
+press 6: EXIT
 """)
+ch=input("enter your choice:")
+print(ch)
+if r=="local":
+    if int(ch)==1:
+         os.system("aws configure")
+         a=input("image id:")
+         b=input("subnet id:")
+         c=input("security group id:")
+        os.system("aws ec2 run-instances --image-id {0} --instance-type    t2.micro --count 1 --subnet-id {1} --security-group-ids {2} --key-name hadoopkey".format(a,b,c))
+        print("instance successfully launched")
+    elif int(ch)==2:
+        print("namenode")
+    elif int(ch)==3:
+        print("datanode")
+    elif int(ch)==4:
+        print("docker")
+    elif int(ch)==5:
+        print("webserver")
+    elif int(ch)==6:
+        os.system("exit")
+    else:
+        print("not supported")
+elif r=="remote":
+    ip=input("enter remote ip:")
+    if int(ch)==1:
+       os.system("ssh {} aws configure".format(ip))
+       a=input("image id:")
+       b=input("subnet id:")
+       c=input("security group id:")
+       os.system("aws ec2 run-instances --image-id {0} --instance-type    t2.micro --count 1 --subnet-id {1} --security-group-ids {2} --key-name hadoopkey".format(a,b,c))
+       print("instance successfully launched")
+    elif int(ch)==2:
+        print("namenode")
+    elif int(ch)==3:
+        print("datanode")
+    elif int(ch)==4:
+        print("docker")
+    elif int(ch)==5:
+        print("webserver")
+    elif int(ch)==6:
+        os.system("exit")
+    else:
+        print("not supported")
+  
