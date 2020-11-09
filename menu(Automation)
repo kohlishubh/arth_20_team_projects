@@ -5,13 +5,13 @@ print("\t\t\t WELCOME TO MY MENU!!")
 os.system("tput setaf 7")
 print("\t\t\t_ _ _ _ _ _ _ _ _ _ _ _ _")
 
-pass=getpass.getpass("Please Enter password:")
-if pass != "linux":
+passwd= getpass.getpass("Please Enter password:")
+if passwd != "linux":
     print("incorrect password")
     exit()
 r=input("Where do you want to run this program?(remote/local):")
 print(r)
-while true:
+while True:
     os.system("clear")
     print("""
     \n
@@ -50,7 +50,7 @@ while true:
             os.system("aws configure")
             j=input("origin domain name:")
             k=input("default root object:")
-            os.system("aws cloudfront create-distribution \ --origin-domain-name {0} \ --default-root-object {1}"format.(j,k))
+            os.system("aws cloudfront create-distribution  --origin-domain-name {0}  --default-root-object {1}".format(j,k))
             print("Cloudfront successfully created")
         elif int(ch)==5:
             os.system("exit")
@@ -83,7 +83,7 @@ while true:
             os.system("ssh {} aws configure".format(ip))
             j=input("origin domain name:")
             k=input("default root object:")
-            os.system("aws cloudfront create-distribution \ --origin-domain-name {0} \ --default-root-object {1}"format.(j,k))
+            os.system("aws cloudfront create-distribution --origin-domain-name {0}  --default-root-object {1}".format(j,k))
             print("Cloudfront successfully created")
         elif int(ch)==5:
             os.system("exit")
@@ -91,3 +91,4 @@ while true:
             print("not supported")
     else:
         print("choose either local or remote")
+    input("\n please enter to continue")
