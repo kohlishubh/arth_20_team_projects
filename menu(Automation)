@@ -10,8 +10,9 @@ if pass != "linux":
     print("incorrect password")
     exit()
 r=input("Where do you want to run this program?(remote/local):")
-print("r")
-while true
+print(r)
+while true:
+    os.system("clear")
     print("""
     \n
     press 1: launch an instance in AWS
